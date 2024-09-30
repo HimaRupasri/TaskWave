@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Time Table</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #007bff;
+            padding: 10px 0;
+        }
+        .navbar img{
+            margin-right: 80px;
+        }
+        .navbar-text {
+            color: #ffffff;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .img-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 80px; /* Increased margin to create a gap between the header and the image */
+        }
+        .img-container img {
+            max-height: 80vh;
+            max-width: 80%;
+        }
+        .home-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: blink-animation 1.5s infinite;
+        }
+        .home-button:hover {
+            background-color: #0056b3;
+        }
+        @keyframes blink-animation {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        h3{
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container">
+            <img src="dd.png" class="mr-2" width="50" height="50" alt="Icon"/>
+            <div class="d-flex flex-grow-1 justify-content-center">
+                <h3>Faculty Dashboard</h3>
+            </div>
+        </div>
+    </header>
+    <div class="img-container">
+        <img src="timetable.jpg" alt="Time Table"/>
+    </div>
+    <button class="btn btn-primary home-button" onclick="redirectToDashboard()">Back to Dashboard</button>
+
+    <script>
+        function redirectToDashboard() {
+            window.location.href = 'faculty_dash.php';
+        }
+    </script>
+</body>
+</html>

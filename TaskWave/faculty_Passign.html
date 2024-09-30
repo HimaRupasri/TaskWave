@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Assignments</title>
+    <link rel="icon" type="image/png" href="dd.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url("./faculty_passign.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-bar {
+            width: 100%;
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-bar .icon {
+            height: 40px;
+            padding-left: 20px;
+        }
+
+        .header-bar h3 {
+            margin: 0;
+            font-size: 24px;
+            text-align: center;
+            flex-grow: 7;
+        }
+
+        .container-wrapper {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            padding: 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background-color: #f2f1f1;
+            padding: 20px;
+            padding-bottom: 50px;
+            padding-top: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #007bff;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        .home-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: blink-animation 1.5s infinite; /* Apply blinking animation */
+}
+.home-button:hover {
+    background-color: #0056b3;
+}
+@keyframes blink-animation {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+        #responseMessage {
+            display: none;
+            text-align: center;
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <img class="icon" src="dd.png" alt="Icon">
+        <h3>Assignment Submission</h3>
+        <div style="flex: 1;"></div>
+    </div>
+    <div class="container-wrapper">
+        <div class="container">
+            <h1 class="text-center">Assignments</h1>
+            <form id="todoForm" enctype="multipart/form-data" method="post">
+                <div class="form-group">
+                    <label for="taskSelect">Subject:</label>
+                    <select id="taskSelect" name="subject" class="form-control">
+                        <option value="" disabled selected>Select Subject...</option>
+                        <option value="CN">CN</option>
+                        <option value="DWDM">DWDM</option>
+                        <option value="FSD">FSD</option>
+                        <option value="ADS">ADS</option>
+                        <option value="ES">ES</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sectionSelect">Section:</label>
+                    <select id="sectionSelect" name="section" class="form-control">
+                        <option value="" disabled selected>Select Section...</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription">Description:</label>
+                    <textarea id="taskDescription" name="description" class="form-control" placeholder="Add assignment description..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="taskFile">File:</label>
+                    <input type="file" id="taskFile" name="assignment_file" class="form-control-file">
+                </div>
+                <div class="form-group">
+                    <label for="dueDate">Due Date:</label>
+                    <input type="date" id="dueDate" name="due_date" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Add Task</button>
+            </form>
+            <div id="responseMessage">Your task is submitted.</div>
+        </div>
+    </div>
+    <button class="btn btn-primary home-button" onclick="redirectToDashboard()">Back to Dashboard</button>
+    <script>
+        function redirectToDashboard() {
+            window.location.href = 'faculty_dash.php'; // Modify this to your actual dashboard URL
+        }
+
+        // Handle form submission with AJAX
+        document.getElementById('todoForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var formData = new FormData(this);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'faculty_Passign.php', true);
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        document.getElementById('responseMessage').style.display = 'block';
+                        document.getElementById('todoForm').reset(); // Reset the form after submission
+                    } else {
+                        alert('Error: ' + response.message);
+                    }
+                } else {
+                    alert('An error occurred during the request.');
+                }
+            };
+
+            xhr.send(formData);
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Time Table</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #007bff;
+            padding: 10px 0;
+        }
+
+        header .navbar-brand {
+            color: #ffffff;
+            font-weight: bold;
+            flex: 1; /* This allows the text to be centered */
+            text-align: center; /* Center the text */
+            display: flex;
+            align-items: center; /* Center icon and text vertically */
+            justify-content: center; /* Aligns items vertically in the center */
+        }
+
+        header .navbar-text {
+            color: #ffffff;
+        }
+
+        header .navbar-brand img {
+            margin-right: 30px; /* Space between the image and the text */
+        }
+
+        header .navbar-nav {
+            flex: 1; /* This allows the text to be centered */
+            justify-content: center; /* Center the text */
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .img-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 80px; /* Increased margin to create a gap between the header and the image */
+        }
+        .img-container img {
+            max-height: 80vh;
+            max-width: 80%;
+        }
+        .home-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .home-button:hover {
+            background-color: #0056b3; /* Slightly darker blue on hover */
+        }
+
+        /* Media query for small screens */
+        @media (max-width: 768px) {
+            .card {
+                flex: 1 1 calc(50% - 20px); /* Two cards per row on small screens */
+            }
+
+            .main-content {
+                gap: 20px; /* Reduce space between cards on smaller screens */
+            }
+        }
+
+        /* Media query for extra small screens */
+        @media (max-width: 480px) {
+            .card {
+                flex: 1 1 100%; /* Full-width cards on very small screens */
+            }
+        }
+        .home-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: blink-animation 1.5s infinite; /* Apply blinking animation */
+}
+.home-button:hover {
+    background-color: #0056b3;
+}
+@keyframes blink-animation {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+    </style>
+</head>
+<body>
+    <header class="navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container">
+        <img src="dd.png" alt="Icon" style="height: 50px; margin-right: 10px; margin-left: -150px;">
+            <a class="navbar-brand" href="#">
+                <h3>Student Dashboard</h3>
+            </a>
+        </div>
+    </header>
+    <div class="img-container">
+        <img src="timetable.jpg" alt="Time Table"/>
+    </div>
+    <button class="btn btn-primary home-button" onclick="redirectToDashboard()">Back to Dashboard</button>
+
+    <script>
+        function redirectToDashboard() {
+            window.location.href = 'faculty_dash.php';
+        }
+    </script>
+</body>
+</html>

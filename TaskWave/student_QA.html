@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question and Answers</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 50px; /* Adjusted for fixed navbar */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-check-label {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" href="#">Q/A</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="student_dash.html">Home</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+            Student: ABC12345
+        </span>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h2>Ask your Question ?</h2>
+    <form id="questionForm">
+        <div class="form-group">
+            <label for="question">Question:</label>
+            <textarea class="form-control" id="question" name="question" rows="5" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="faculty">Select Faculty:</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="faculty" id="faculty1" value="Faculty 1" checked>
+                <label class="form-check-label" for="faculty1">Faculty 1</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="faculty" id="faculty2" value="Faculty 2">
+                <label class="form-check-label" for="faculty2">Faculty 2</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="faculty" id="faculty3" value="Faculty 3">
+                <label class="form-check-label" for="faculty3">Faculty 3</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Question</button>
+    </form>
+</div>
+<div>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Example JavaScript to handle form submission (you can expand this as needed)
+    document.getElementById('questionForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Example: Collect form data
+        const question = document.getElementById('question').value;
+        const selectedFaculty = document.querySelector('input[name="faculty"]:checked').value;
+
+        // Example: Perform further actions (e.g., send data to server via AJAX)
+
+        // Replace with actual logic based on your requirements
+        console.log('Question:', question);
+        console.log('Selected Faculty:', selectedFaculty);
+
+        // Reset form or show success message
+        alert('Question submitted successfully!');
+        document.getElementById('questionForm').reset();
+    });
+</script>
+
+</body>
+</html>
